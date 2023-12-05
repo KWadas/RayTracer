@@ -1,5 +1,4 @@
 #include "Sphere.h"
-#include "Ray.h"
 
 bool Sphere::Hit(const ray_t& ray, float minDistance, float maxDistance, raycastHit_t& raycastHit)
 {
