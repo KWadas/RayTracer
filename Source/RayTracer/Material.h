@@ -29,3 +29,13 @@ protected:
 	glm::vec3 m_albedo{ 0 };
 	float m_fuzz = 0;
 };
+
+class Emissive : public Material
+{
+public:
+	Emissive(const color3_t& albedo, float intensity = 1) : m_albedo{ albedo }, m_intensity{ intensity } {}
+
+protected:
+	glm::vec3 m_albedo{ 0, 0, 0 };
+	float m_intensity = 1;
+};

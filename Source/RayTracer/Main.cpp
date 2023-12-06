@@ -43,7 +43,6 @@ int main(int, char**)
 		auto sphere = std::make_unique<Sphere>(random({ -2, -2, 1 }, { 2, 2, -7 }), random(0.3, 0.4), material);
 		scene.AddObject(std::move(sphere));
 	}
-	
 
 	// render scene 
 	canvas.Clear({ 0, 0, 0, 1 });

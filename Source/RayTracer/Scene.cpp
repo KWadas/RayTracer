@@ -31,7 +31,7 @@ void Scene::Render(Canvas& canvas, int numSamples)
 				// cast ray into scene
 				// add color value from trace
 				raycastHit_t raycastHit;
-				color += Trace(ray, 0, 100, raycastHit, m_depth);
+				color += Trace(ray, 0.05, 100, raycastHit, m_depth);
 			}
 
 			// draw color to canvas point (pixel)
@@ -68,12 +68,13 @@ color3_t Scene::Trace(const ray_t& ray, float minDistance, float maxDistance, ra
 		if (depth > 0 && raycastHit.material->Scatter(ray, raycastHit, color, scattered))
 		{
 			// recursive function, call self and modulate (multiply) colors of depth bounces
-			return color * Trace(scattered, minDistance, maxDistance, raycastHit, depth - 1);
+			return color *Trace(scattered, minDistance, maxDistance, raycastHit, depth - 1);
 		}
 		else
 		{
 			// reached maximum depth of bounces (color is black)
-			return color3_t{ 0, 0, 0 };
+			return color3_t{ 0, 1.0, 0 };
+			//return (scattered.direction + glm::vec3{ 1.0, 1.0, 1.0 }) * glm::vec3{ 0.5, 0.5, 0.5 };
 		}
 	}
 
